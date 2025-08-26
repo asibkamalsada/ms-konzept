@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+
+const links = [
+    { href: "/", label: "Start" },
+    { href: "/leistungen", label: "Leistungen" },
+    { href: "/preise", label: "Preise" },
+    { href: "/kontakt.astro", label: "Kontakt" },
+    { href: "/impressum", label: "Impressum" },
+];
+---
+
+<html lang="de" class="h-full scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <slot name="head" />
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+<header class="sticky top-0 z-10 border-b bg-white/70 backdrop-blur">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="/" class="text-lg font-semibold">Unkrautfrei</a>
+        <ul class="flex gap-5 text-sm">
+            {links.map(l => (
+                    <li><a class="hover:text-gray-600" href={l.href}>{l.label}</a></li>
+            ))}
+        </ul>
+    </nav>
+</header>
+
+<main class="flex-1">
+    <slot />
+</main>
+
+<footer class="border-t bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-gray-600 grid gap-2 sm:flex sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Unkrautfrei – Professionelle Unkrautbeseitigung</p>
+        <div class="flex gap-4">
+            <a class="hover:text-gray-800" href="/datenschutz">Datenschutz</a>
+            <a class="hover:text-gray-800" href="/impressum">Impressum</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

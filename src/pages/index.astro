@@ -1,16 +1,33 @@
 ---
-
+import Base from "../layouts/Base.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base>
+    <fragment slot="head">
+        <title>Unkrautbeseitigung – Schnell & Schonend</title>
+        <meta name="description" content="Professionelle Unkrautbeseitigung für Hof, Einfahrt, Gehwege und Firmenflächen – schnell, schonend und zuverlässig." />
+    </fragment>
+
+    <section class="mx-auto max-w-6xl px-4 py-20 grid gap-10 md:grid-cols-2 items-center">
+        <div>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Unkraut loswerden. <span class="text-gray-600">Dauerhaft gepflegte Flächen.</span></h1>
+            <p class="mt-4 text-gray-600">
+                Wir entfernen Unkraut auf Pflaster, Kies und Kanten – sauber, umweltschonend und termintreu.
+            </p>
+            <div class="mt-6 flex gap-3">
+                <a href="/src/pages/kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800">Kostenloses Angebot</a>
+                <a href="/leistungen" class="rounded-2xl px-5 py-3 border hover:bg-gray-100">Leistungen</a>
+            </div>
+            <ul class="mt-6 grid gap-2 text-sm text-gray-700">
+                <li>• Thermische & mechanische Verfahren</li>
+                <li>• Für Privat, Gewerbe & Hausverwaltungen</li>
+                <li>• Flexible Wartungsintervalle (Einmal, monatlich, saisonal)</li>
+            </ul>
+        </div>
+        <div class="rounded-3xl border bg-white p-6 shadow-sm">
+            <div class="aspect-[4/3] rounded-2xl border bg-gray-100 grid place-items-center">
+                <span class="text-gray-400">Bild/Illustration Ihrer Wahl</span>
+            </div>
+        </div>
+    </section>
+</Base>
