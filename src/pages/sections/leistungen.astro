@@ -1,0 +1,18 @@
+---
+const leistungen = [
+    { title: "Mechanisch", text: "Bürsten, Fugenreiniger, Kantenpflege." },
+    { title: "Thermisch", text: "Heißluft/Heißwasser – nachhaltig, ohne Chemie." },
+    { title: "Regelpflege", text: "Einmalig, monatlich oder saisonal." },
+];
+---
+<section id="leistungen" class="mx-auto max-w-6xl px-4 pb-16">
+    <h2 class="text-2xl font-semibold" data-reveal="fade">Leistungen</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3" data-reveal-stagger="70">
+        {leistungen.map((l) => (
+                <div class="rounded-2xl border bg-white p-5" data-reveal="fade">
+                    <h3 class="font-medium" data-reveal="fade">{l.title}</h3>
+                    <p class="mt-2 text-sm text-gray-600" data-reveal="fade" data-reveal-delay="60">{l.text}</p>
+                </div>
+        ))}
+    </div>
+</section>

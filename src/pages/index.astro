@@ -1,33 +1,19 @@
 ---
 import Base from "../layouts/Base.astro";
+import Hero from "./sections/hero.astro"
+import Leistungen from "./sections/leistungen.astro";
+import Kontakt from "./sections/kontakt.astro";
+import Impressum from "./sections/impressum.astro";
+import Datenschutz from "./sections/datenschutz.astro";
 ---
-
 <Base>
     <fragment slot="head">
-        <title>Unkrautbeseitigung – Schnell & Schonend</title>
-        <meta name="description" content="Professionelle Unkrautbeseitigung für Hof, Einfahrt, Gehwege und Firmenflächen – schnell, schonend und zuverlässig." />
+        <title>Unkrautbeseitigung – Hof, Einfahrt & Gehwege</title>
+        <meta name="description" content="Professionelle Unkrautentfernung – schnell, schonend, zuverlässig."/>
     </fragment>
-
-    <section class="mx-auto max-w-6xl px-4 py-20 grid gap-10 md:grid-cols-2 items-center">
-        <div>
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Unkraut loswerden. <span class="text-gray-600">Dauerhaft gepflegte Flächen.</span></h1>
-            <p class="mt-4 text-gray-600">
-                Wir entfernen Unkraut auf Pflaster, Kies und Kanten – sauber, umweltschonend und termintreu.
-            </p>
-            <div class="mt-6 flex gap-3">
-                <a href="/unkraut/kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800">Kostenloses Angebot</a>
-                <a href="/unkraut/leistungen" class="rounded-2xl px-5 py-3 border hover:bg-gray-100">Leistungen</a>
-            </div>
-            <ul class="mt-6 grid gap-2 text-sm text-gray-700">
-                <li>• Thermische & mechanische Verfahren</li>
-                <li>• Für Privat, Gewerbe & Hausverwaltungen</li>
-                <li>• Flexible Wartungsintervalle (Einmal, monatlich, saisonal)</li>
-            </ul>
-        </div>
-        <div class="rounded-3xl border bg-white p-6 shadow-sm">
-            <div class="aspect-[4/3] rounded-2xl border bg-gray-100 grid place-items-center">
-                <span class="text-gray-400">Bild/Illustration Ihrer Wahl</span>
-            </div>
-        </div>
-    </section>
+    <Hero/>
+    <Leistungen/>
+    <Kontakt/>
+    <Impressum/>
+    <Datenschutz/>
 </Base>
