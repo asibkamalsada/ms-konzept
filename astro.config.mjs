@@ -5,9 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://asibkamalsada.github.io',
+    site: 'https://www.hamza-bistro-leipzig.de',
     vite: {
         plugins: [tailwindcss()]
     },
-    base: '/unkraut'
 });
