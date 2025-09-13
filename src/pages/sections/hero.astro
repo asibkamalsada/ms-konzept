@@ -89,7 +89,7 @@ const sections = [
                  tabindex="0" aria-label={`Bildergalerie ${s.title}`}>
                 {s.bilder.map((src, i) => (
                         <img src={src} alt={`${s.title} Bild ${i + 1}`}
-                             class="snap-start h-full w-auto rounded-2xl border object-cover select-none"
+                             class="snap-start h-full w-auto max-w-11/12 rounded-2xl border object-contain select-none"
                              draggable="false" loading={i === 0 ? "eager" : "lazy"}/>
                 ))}
             </div>
