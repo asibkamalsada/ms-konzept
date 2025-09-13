@@ -6,17 +6,36 @@
         <div class="rounded-2xl border bg-white p-6" data-reveal="fade">
             <h3 class="font-medium" data-reveal="fade">Direkt</h3>
             <div class="mt-2 grid gap-1 text-sm text-gray-700" data-reveal-stagger="60">
-                <p data-reveal="fade">E-Mail: <a class="underline" href="mailto:info@ms-konzept.de">info@ms-konzept.de</a></p>
-                <p data-reveal="fade" data-reveal-delay="60">Adresse:<br/>Mehmet Seçkin<br/>Ludwig Hupfeld Straße 16<br/>04178 Leipzig</p>
+                <p data-reveal="fade">E-Mail: <a class="underline"
+                                                 href="mailto:info@ms-konzept.de">info@ms-konzept.de</a></p>
+                <p data-reveal="fade" data-reveal-delay="60">Adresse:<br/>Mehmet Seçkin<br/>Ludwig Hupfeld Straße
+                    16<br/>04178 Leipzig</p>
                 <p data-reveal="fade" data-reveal-delay="120">Einsatzgebiet: Leipzig & Umgebung (bis 200 km)</p>
             </div>
         </div>
 
-        <form class="rounded-2xl border bg-white p-6 grid gap-4" name="kontakt" netlify data-reveal-stagger="60">
-            <input class="border rounded-xl px-3 py-2" name="name" placeholder="Ihr Name" required data-reveal="fade"/>
-            <input class="border rounded-xl px-3 py-2" name="email" type="email" placeholder="E-Mail" required data-reveal="fade" data-reveal-delay="40"/>
-            <textarea class="border rounded-xl px-3 py-2 min-h-28" name="message" placeholder="Nachricht (Fläche, Ort, Terminwunsch)" data-reveal="fade" data-reveal-delay="80"></textarea>
-            <button class="rounded-xl px-4 py-2 bg-black text-white hover:bg-gray-800" type="submit" data-reveal="fade" data-reveal-delay="120">
+        <form
+                action="https://formspree.io/f/xnnbrrnr"
+                method="POST"
+                class="rounded-2xl border bg-white p-6 grid gap-4"
+                name="kontakt"
+                data-reveal-stagger="60"
+        >
+            <label>
+                <input class="border rounded-xl px-3 py-2" name="name" placeholder="Ihr Name" required
+                       data-reveal="fade"/>
+            </label>
+            <label>
+                <input class="border rounded-xl px-3 py-2" name="email" type="email" placeholder="E-Mail" required
+                       data-reveal="fade" data-reveal-delay="40"/>
+            </label>
+            <label>
+                <textarea class="border rounded-xl px-3 py-2 min-h-28" name="message"
+                          placeholder="Nachricht (Fläche, Ort, Terminwunsch)" data-reveal="fade"
+                          data-reveal-delay="80" required></textarea>
+            </label>
+            <button class="rounded-xl px-4 py-2 bg-black text-white hover:bg-gray-800" type="submit" data-reveal="fade"
+                    data-reveal-delay="120">
                 Senden
             </button>
         </form>
