@@ -10,7 +10,7 @@
         will-change: opacity, transform, filter;
     }
 
-    .section {
+    .top-level-section {
         @apply mx-auto max-w-7xl px-4 my-12;
     }
 
