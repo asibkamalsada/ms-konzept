@@ -1,8 +1,4 @@
 ---
-/**
-    * hero.astro — Zwei Hero-Sections mit begrenzter Breite + Galerie mit SVG-Pfeilen.
-    */
-
 const IMAGES = {
     bau: [
         "/img/bagger-arbeiten-1.jpg",
@@ -32,9 +28,8 @@ const GRUEN_LEISTUNGEN = [
     "Pflege von Solarparks für maximale Effizienz und ein gepflegtes Erscheinungsbild",
     "Grasmähen & Flächenpflege – auch auf weitläufigen Grundstücken",
 ];
-
 ---
-<section class="section" aria-label="MS-Konzept – Bau & Grünpflege" data-reveal-stagger="100" style="padding-top: 3rem">
+<section class="section" aria-label="MS-Konzept – Bau & Grünpflege" data-reveal-stagger="100">
     <div class="text-center" data-reveal="fade">
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">MS-Konzept - Bau & Grünpflege aus einer Hand</h1>
         <p class="mt-3 text-gray-600">Bagger- & Bauarbeiten · Grünpflege & Landschaftsbau</p>
@@ -42,12 +37,14 @@ const GRUEN_LEISTUNGEN = [
 </section>
 
 <!-- HERO 1: Tiefbauarbeiten -->
-<section id="leistungen" class="section grid gap-6" aria-label="Tiefbauarbeiten" data-reveal-stagger="80">
+<section id="leistungen" class="section" aria-label="Tiefbauarbeiten" data-reveal-stagger="80">
     <header data-reveal="fade">
         <h2 class="text-3xl md:text-4xl font-bold">Tiefbauarbeiten</h2>
-        <p class="mt-2 text-gray-600 max-w-3xl">
-            Als erfahrenes Kleinunternehmen aus Leipzig bieten wir Ihnen ein breites Leistungsspektrum im Bereich Tiefbauarbeiten.
-            Mit moderner Technik, handwerklichem Können und viel Einsatzbereitschaft realisieren wir kleine wie große Projekte zuverlässig und präzise.
+        <p class="mt-2 text-gray-600">
+            Als erfahrenes Kleinunternehmen aus Leipzig bieten wir Ihnen ein breites Leistungsspektrum im Bereich
+            Tiefbauarbeiten.
+            Mit moderner Technik, handwerklichem Können und viel Einsatzbereitschaft realisieren wir kleine wie
+            große Projekte zuverlässig und präzise.
         </p>
     </header>
 
@@ -60,42 +57,58 @@ const GRUEN_LEISTUNGEN = [
     </div>
 
     <!-- Galerie -->
-    <div class="relative max-w-3xl" data-reveal="fade">
-        <div class="gallery group/gal rounded-3xl border bg-white p-3 shadow-sm overflow-hidden">
-            <div id="gal-bau" class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-4" tabindex="0" aria-label="Bildergalerie Tiefbau">
+    <div class="relative mt-8" data-reveal="fade">
+        <div class="gallery rounded-3xl border bg-white p-3 shadow-sm overflow-hidden">
+            <div id="gal-bau" class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-4">
                 {IMAGES.bau.map((src, i) => (
-                        <img src={src} alt={`Tiefbau & Pflasterarbeiten Bild ${i+1}`} class="snap-start min-w-[320px] md:min-w-[420px] aspect-[4/3] rounded-2xl border object-cover select-none" draggable="false" loading={i === 0 ? "eager" : "lazy"} />
+                        <img src={src} alt={`Tiefbau & Pflasterarbeiten Bild ${i + 1}`}
+                             class="snap-start h-[240px] w-auto rounded-2xl border object-cover select-none"
+                             draggable="false" loading={i === 0 ? "eager" : "lazy"}/>
                 ))}
             </div>
             <!-- Buttons -->
             <div class="hidden md:block">
-                <button type="button" class="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/80 backdrop-blur p-2 shadow hover:bg-white" data-scroll-target="gal-bau" data-direction="-1" aria-label="Vorheriges Bild">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                <button type="button"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/80 backdrop-blur p-2 shadow hover:bg-white"
+                        data-scroll-target="gal-bau" data-direction="-1" aria-label="Vorheriges Bild">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
                 </button>
-                <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/80 backdrop-blur p-2 shadow hover:bg-white" data-scroll-target="gal-bau" data-direction="1" aria-label="Nächstes Bild">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                <button type="button"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/80 backdrop-blur p-2 shadow hover:bg-white"
+                        data-scroll-target="gal-bau" data-direction="1" aria-label="Nächstes Bild">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </button>
             </div>
         </div>
     </div>
 
-    <p class="text-gray-700 max-w-3xl" data-reveal="fade">
-        Ob Privatkunde oder Gewerbe – wir unterstützen Sie bei der Umsetzung Ihrer Vorhaben und sorgen für saubere, langlebige Ergebnisse.
+    <p class="mt-6 text-gray-700 " data-reveal="fade">
+        Ob Privatkunde oder Gewerbe – wir unterstützen Sie bei der Umsetzung Ihrer Vorhaben und sorgen für saubere,
+        langlebige Ergebnisse.
         <strong class="block">👉 Einsatzgebiet: Leipzig und Umgebung bis zu 200&nbsp;km.</strong>
     </p>
 
-    <div>
-        <a href="#kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800 gap-3 max-w-3xl" data-reveal="fade">Kostenloses Angebot</a>
+    <div class="mt-4">
+        <a href="#kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800" data-reveal="fade">Kostenloses
+            Angebot</a>
     </div>
 </section>
 
 <!-- HERO 2: Grünpflege -->
-<section class="section grid gap-6" aria-label="Unkrautbeseitigung & Solarparkpflege" data-reveal-stagger="80">
+<section class="section" aria-label="Unkrautbeseitigung & Solarparkpflege" data-reveal-stagger="80">
     <header data-reveal="fade">
         <h2 class="text-3xl md:text-4xl font-bold">Unkrautbeseitigung & Solarparkpflege</h2>
-        <p class="mt-2 text-gray-600 max-w-3xl">
-            Neben Tiefbauarbeiten sind wir auch Ihr Partner für die professionelle Pflege von Flächen und Außenanlagen.
-            Wir sorgen für Ordnung, Sauberkeit und Nachhaltigkeit – im privaten Garten ebenso wie auf großflächigen Anlagen.
+        <p class="mt-2 text-gray-600 ">
+            Neben Tiefbauarbeiten sind wir auch Ihr Partner für die professionelle Pflege von Flächen und
+            Außenanlagen.
+            Wir sorgen für Ordnung, Sauberkeit und Nachhaltigkeit – im privaten Garten ebenso wie auf großflächigen
+            Anlagen.
         </p>
     </header>
 
@@ -108,32 +121,47 @@ const GRUEN_LEISTUNGEN = [
     </div>
 
     <!-- Galerie -->
-    <div class="relative max-w-3xl" data-reveal="fade">
+    <div class="relative mt-8" data-reveal="fade">
         <div class="gallery group/gal rounded-3xl border bg-white p-3 shadow-sm overflow-hidden">
-            <div id="gal-gruen" class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-4" tabindex="0" aria-label="Bildergalerie Grünpflege">
+            <div id="gal-gruen" class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-4" tabindex="0"
+                 aria-label="Bildergalerie Grünpflege">
                 {IMAGES.gruen.map((src, i) => (
-                        <img src={src} alt={`Grünpflege Bild ${i+1}`} class="snap-start min-w-[320px] md:min-w-[420px] aspect-[4/3] rounded-2xl border object-cover select-none" draggable="false" loading={i === 0 ? "eager" : "lazy"} />
+                        <img src={src} alt={`Grünpflege Bild ${i + 1}`}
+                             class="snap-start h-[240px] w-auto rounded-2xl border object-cover select-none"
+                             draggable="false" loading={i === 0 ? "eager" : "lazy"}/>
                 ))}
             </div>
             <!-- Buttons -->
             <div class="hidden md:block">
-                <button type="button" class="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/80 backdrop-blur p-2 shadow hover:bg-white" data-scroll-target="gal-gruen" data-direction="-1" aria-label="Vorheriges Bild">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                <button type="button"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/80 backdrop-blur p-2 shadow hover:bg-white"
+                        data-scroll-target="gal-gruen" data-direction="-1" aria-label="Vorheriges Bild">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
                 </button>
-                <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/80 backdrop-blur p-2 shadow hover:bg-white" data-scroll-target="gal-gruen" data-direction="1" aria-label="Nächstes Bild">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                <button type="button"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/80 backdrop-blur p-2 shadow hover:bg-white"
+                        data-scroll-target="gal-gruen" data-direction="1" aria-label="Nächstes Bild">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </button>
             </div>
         </div>
     </div>
 
-    <p class="text-gray-700 max-w-3xl" data-reveal="fade">
-        Mit Zuverlässigkeit, Erfahrung und flexibler Terminplanung setzen wir Ihre Wünsche schnell und sorgfältig um.
+    <p class="mt-6 text-gray-700 " data-reveal="fade">
+        Mit Zuverlässigkeit, Erfahrung und flexibler Terminplanung setzen wir Ihre Wünsche schnell und sorgfältig
+        um.
         <strong class="block">👉 Einsatzgebiet: Leipzig und Umgebung bis zu 200&nbsp;km.</strong>
     </p>
 
-    <div>
-        <a href="#kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800 gap-3 max-w-3xl" data-reveal="fade">Kostenloses Angebot</a>
+    <div class="mt-4">
+        <a href="#kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800" data-reveal="fade">Kostenloses
+            Angebot</a>
     </div>
 </section>
 
@@ -145,6 +173,6 @@ const GRUEN_LEISTUNGEN = [
         const targetId = btn.getAttribute('data-scroll-target');
         const dir = parseInt(btn.getAttribute('data-direction'));
         const el = document.getElementById(targetId);
-        if (el) el.scrollBy({ left: SCROLL_AMOUNT * dir, behavior: 'smooth' });
+        if (el) el.scrollBy({left: SCROLL_AMOUNT * dir, behavior: 'smooth'});
     });
 </script>

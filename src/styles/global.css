@@ -11,11 +11,13 @@
     }
 
     .section {
-        @apply mx-auto max-w-6xl px-4 pb-16;
+        @apply mx-auto max-w-7xl px-4 my-12;
     }
+
     .section-title {
         @apply text-3xl font-semibold;
     }
+
     .reveal-show {
         opacity: 1;
         transform: none;
