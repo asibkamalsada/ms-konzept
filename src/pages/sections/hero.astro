@@ -1,29 +1,131 @@
 ---
-const bullets = [
-    "Thermisch & mechanisch, ohne Chemie",
-    "Für Privat, Gewerbe & Hausverwaltungen",
-    "Einmalig oder im Abo (saisonal)"
-];
+/**
+    * hero.astro — Zwei Hero-Sections UNTEREINANDER + horizontale Galerie (Swipe/Click)
+    *
+    * Bilder bitte in `public/img/` kopieren (Namen siehe Kommentare unten).
+    * Leichtgewichtige Galerie: native horizontal scroll + CSS scroll-snap + Prev/Next Buttons.
+    */
+
+const IMAGES = {
+    bau: [
+        "/img/bagger-arbeiten-1.jpg",
+        "/img/pflaster-arbeiten-1.jpg",
+        "/img/pflaster-arbeiten-2.jpg",
+        "/img/bagger-arbeiten-2.jpg",
+        "/img/pflaster-arbeiten-3.jpg",
+    ],
+    gruen: [
+        "/img/rasenmaeher-1.jpg",
+        "/img/boeschungsmaeher-1.jpg",
+    ],
+};
+
+const scrollByAmount = 360; // px pro Klick (kannst du anpassen)
 ---
-<section class="section grid gap-10 md:grid-cols-2 items-center" data-reveal-stagger="80">
-    <div data-reveal="fade">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight" data-reveal="fade">
-            Unkraut weg – Flächen gepflegt.
-        </h1>
-        <ul class="mt-5 grid gap-2 text-sm text-gray-700" data-reveal-stagger="80">
-            {bullets.map((b) => <li data-reveal="fade">{b}</li>)}
-        </ul>
-        <p class="mt-4 text-gray-600" data-reveal="fade" data-reveal-delay="40">
-            Wir entfernen Unkraut auf Pflaster, Kies und Kanten – umweltschonend und termintreu.
-        </p>
-        <div class="mt-6 flex gap-3" data-reveal-stagger="80">
-            <a href="#kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800" data-reveal="fade">Kostenloses Angebot</a>
-            <a href="#leistungen" class="rounded-2xl px-5 py-3 border hover:bg-gray-100" data-reveal="fade" data-reveal-delay="60">Leistungen</a>
-        </div>
-    </div>
-    <div class="rounded-3xl border bg-white p-6 shadow-sm" data-reveal="fade">
-        <div class="aspect-[4/3] rounded-2xl border bg-gray-100 grid place-items-center">
-            <span class="text-gray-400">Platz für Foto/Illustration</span>
-        </div>
+<section class="section" aria-label="MS-Konzept – Bau & Grünpflege" data-reveal-stagger="100">
+    <div class="text-center" data-reveal="fade">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">MS‑Konzept – Bau & Grünpflege aus einer Hand</h1>
+        <p class="mt-3 text-gray-600">Bagger‑ & Bauarbeiten · Grünpflege & Landschaftsbau</p>
     </div>
 </section>
+
+<!-- HERO 1: Tiefbauarbeiten -->
+<section class="section grid gap-6" aria-label="Tiefbauarbeiten" data-reveal-stagger="80">
+    <header data-reveal="fade">
+        <h2 class="text-3xl md:text-4xl font-bold">Tiefbauarbeiten</h2>
+        <p class="mt-2 text-gray-600 max-w-3xl">
+            Als erfahrenes Kleinunternehmen aus Leipzig bieten wir Ihnen ein breites Leistungsspektrum im Bereich Tiefbauarbeiten.
+            Mit moderner Technik, handwerklichem Können und viel Einsatzbereitschaft realisieren wir kleine wie große Projekte zuverlässig und präzise.
+        </p>
+    </header>
+
+    <ul class="grid gap-2 text-sm text-gray-800" data-reveal-stagger="60">
+        <li data-reveal="fade">Pflasterarbeiten für Einfahrten, Terrassen, Wege und Plätze</li>
+        <li data-reveal="fade" data-reveal-delay="30">Baggerarbeiten für Ausschachtungen, Fundamentvorbereitungen und Erdbewegungen</li>
+        <li data-reveal="fade" data-reveal-delay="60">Suchschachtungen für Leitungen, Kabel und Anschlüsse</li>
+        <li data-reveal="fade" data-reveal-delay="90">Abrissarbeiten von kleineren Bauwerken und Anlagen</li>
+    </ul>
+
+    <!-- Galerie: horizontal, swipe/click -->
+    <div class="relative" data-reveal="fade">
+        <div class="gallery group/gal rounded-3xl border bg-white p-3 shadow-sm">
+            <div id="gal-bau" class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-4" tabindex="0" aria-label="Bildergalerie Tiefbau">
+                {IMAGES.bau.map((src, i) => (
+                        <img src={src} alt={`Tiefbau & Pflasterarbeiten Bild ${i+1}`} class="snap-start min-w-[320px] md:min-w-[420px] aspect-[4/3] rounded-2xl border object-cover select-none" draggable="false" loading={i === 0 ? "eager" : "lazy"} />
+                ))}
+            </div>
+            <!-- Buttons -->
+            <div class="pointer-events-none md:pointer-events-auto">
+                <button class="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 rounded-2xl border bg-white/80 backdrop-blur px-3 py-2 shadow hover:bg-white" aria-label="Vorheriges Bild" onclick="document.getElementById('gal-bau')?.scrollBy({left: -scrollByAmount, behavior: 'smooth'})">‹</button>
+                <button class="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 rounded-2xl border bg-white/80 backdrop-blur px-3 py-2 shadow hover:bg-white" aria-label="Nächstes Bild" onclick="document.getElementById('gal-bau')?.scrollBy({left: scrollByAmount, behavior: 'smooth'})">›</button>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-gray-700" data-reveal="fade">
+        Ob Privatkunde oder Gewerbe – wir unterstützen Sie bei der Umsetzung Ihrer Vorhaben und sorgen für saubere, langlebige Ergebnisse.
+        <strong class="block">👉 Einsatzgebiet: Leipzig und Umgebung bis zu 200&nbsp;km.</strong>
+    </p>
+
+    <div class="flex flex-wrap gap-3" data-reveal-stagger="60">
+        <a href="#kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800" data-reveal="fade">Angebot anfragen</a>
+        <a href="#referenzen-bau" class="rounded-2xl px-5 py-3 border hover:bg-gray-100" data-reveal="fade" data-reveal-delay="40">Referenzen ansehen</a>
+    </div>
+</section>
+
+<!-- HERO 2: Grünpflege -->
+<section class="section grid gap-6" aria-label="Unkrautbeseitigung & Solarparkpflege" data-reveal-stagger="80">
+    <header data-reveal="fade">
+        <h2 class="text-3xl md:text-4xl font-bold">Unkrautbeseitigung & Solarparkpflege</h2>
+        <p class="mt-2 text-gray-600 max-w-3xl">
+            Neben Tiefbauarbeiten sind wir auch Ihr Partner für die professionelle Pflege von Flächen und Außenanlagen.
+            Wir sorgen für Ordnung, Sauberkeit und Nachhaltigkeit – im privaten Garten ebenso wie auf großflächigen Anlagen.
+        </p>
+    </header>
+
+    <ul class="grid gap-2 text-sm text-gray-800" data-reveal-stagger="60">
+        <li data-reveal="fade">Unkrautbeseitigung auf Wegen, Plätzen und Grünflächen</li>
+        <li data-reveal="fade" data-reveal-delay="30">Pflege von Solarparks für maximale Effizienz und ein gepflegtes Erscheinungsbild</li>
+        <li data-reveal="fade" data-reveal-delay="60">Grasmähen & Flächenpflege – auch auf weitläufigen Grundstücken</li>
+    </ul>
+
+    <!-- Galerie: horizontal, swipe/click -->
+    <div class="relative" data-reveal="fade">
+        <div class="gallery group/gal rounded-3xl border bg-white p-3 shadow-sm">
+            <div id="gal-gruen" class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-4" tabindex="0" aria-label="Bildergalerie Grünpflege">
+                {IMAGES.gruen.map((src, i) => (
+                        <img src={src} alt={`Grünpflege Bild ${i+1}`} class="snap-start min-w-[320px] md:min-w-[420px] aspect-[4/3] rounded-2xl border object-cover select-none" draggable="false" loading={i === 0 ? "eager" : "lazy"} />
+                ))}
+            </div>
+            <!-- Buttons -->
+            <div class="pointer-events-none md:pointer-events-auto">
+                <button class="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 rounded-2xl border bg-white/80 backdrop-blur px-3 py-2 shadow hover:bg-white" aria-label="Vorheriges Bild" onclick="document.getElementById('gal-gruen')?.scrollBy({left: -scrollByAmount, behavior: 'smooth'})">‹</button>
+                <button class="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 rounded-2xl border bg-white/80 backdrop-blur px-3 py-2 shadow hover:bg-white" aria-label="Nächstes Bild" onclick="document.getElementById('gal-gruen')?.scrollBy({left: scrollByAmount, behavior: 'smooth'})">›</button>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-gray-700" data-reveal="fade">
+        Mit Zuverlässigkeit, Erfahrung und flexibler Terminplanung setzen wir Ihre Wünsche schnell und sorgfältig um.
+        <strong class="block">👉 Einsatzgebiet: Leipzig und Umgebung bis zu 200&nbsp;km.</strong>
+    </p>
+
+    <div class="flex flex-wrap gap-3" data-reveal-stagger="60">
+        <a href="#kontakt" class="rounded-2xl px-5 py-3 text-white bg-black hover:bg-gray-800" data-reveal="fade">Kostenloses Angebot</a>
+        <a href="#leistungen-gruen" class="rounded-2xl px-5 py-3 border hover:bg-gray-100" data-reveal="fade" data-reveal-delay="40">Leistungen ansehen</a>
+    </div>
+</section>
+
+<script is:inline>
+    // Optional: Pfeiltasten-Navigation, solange der Container fokussiert ist
+    const bindKeys = (id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') el.scrollBy({ left: -scrollByAmount, behavior: 'smooth' });
+            if (e.key === 'ArrowRight') el.scrollBy({ left: scrollByAmount, behavior: 'smooth' });
+        });
+    };
+    bindKeys('gal-bau');
+    bindKeys('gal-gruen');
+</script>
