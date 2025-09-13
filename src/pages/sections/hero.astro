@@ -85,11 +85,11 @@ const sections = [
     {/* Galerie */}
     <div class="relative mt-8" data-reveal="fade">
         <div class="gallery rounded-3xl border bg-white p-3 shadow-sm overflow-hidden">
-            <div id={s.galerieId} class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-4 max-h-[320px]"
+            <div id={s.galerieId} class="flex gap-3 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-px-4 h-[320px]"
                  tabindex="0" aria-label={`Bildergalerie ${s.title}`}>
                 {s.bilder.map((src, i) => (
                         <img src={src} alt={`${s.title} Bild ${i + 1}`}
-                             class="snap-start h-full max-h-[320px] w-auto rounded-2xl border object-cover select-none"
+                             class="snap-start h-full w-auto rounded-2xl border object-cover select-none"
                              draggable="false" loading={i === 0 ? "eager" : "lazy"}/>
                 ))}
             </div>
